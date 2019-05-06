@@ -19,7 +19,7 @@ def bPredict():
     #API function
     response = predict_bayes(input_data["info"])
 
-    return response
+    return input_data
 
 
 #Define the get method.
