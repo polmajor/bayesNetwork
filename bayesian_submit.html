@@ -43,8 +43,8 @@
                   error: function(error) {
                       document.getElementById("results").innerHTML = "error :(";
                     },
-                  success: function(data, textStatus, xhr) {
-                    document.getElementById("results").innerHTML = data;
+                  success: function(text) {
+                    document.getElementById("results").innerHTML = text;
                     }
                 });
                
