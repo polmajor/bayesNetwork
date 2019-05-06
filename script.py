@@ -17,7 +17,7 @@ def bPredict():
     
     
     #API function
-    response = predict_bayes(input_data["info"])
+    #response = predict_bayes(input_data["info"])
 
     return input_data
 
