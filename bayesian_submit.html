@@ -42,8 +42,8 @@
                    error: function(error) {
                       document.getElementById("results").innerHTML = "error :(";
                     },
-                   complete: function(response) {
-                   document.getElementById("results").innerHTML = response.status;
+                   complete: function(text) {
+                   document.getElementById("results").innerHTML = text;
                    }
                 });
                
@@ -79,8 +79,9 @@
             </div>
           </nav>
     
-<div class="collapse navbar-collapse" id="myNavbar2">   
-    <h5>Select the desired combination. Leave at least one 'unknown', but not all!</h5>
+<div class="collapse navbar-collapse" id="myNavbar2">
+    <h5>This app uses a Bayesian network builded from the data of Bordetella pertussis strains, isolated between 1986 and 2015.</h5>
+    <h5>Select a combination to calculate the conditional probabilites of the missing values. Leave at least one 'unknown', but not all!</h5>
 <table class="table table-bordered" id="myTable">
 				   						<thead>
 				     						 <tr>
@@ -136,11 +137,15 @@
                                                 </form>
                                                  </td>                                                
                                             </tr>
-				   					</tbody>
+                                      </tbody>
 </table>   
     <button onclick="calculate()">Calculate</button>
-    <div>
-        <p id="results">sdf</p>
+    <hr>
+    <div id = results>
+
     </div>
-</div>
+
+    
+    </div>
+    </body>
    

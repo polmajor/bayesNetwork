@@ -1,9 +1,8 @@
 import json
-import codecs
+import io
 from flask import Flask, request
 from serve import predict_bayes
 
-# create an instance of Flask
 app = Flask(__name__)
 
 #Define the post method.
@@ -15,9 +14,9 @@ def bPredict():
     """
     # Data the user input
     input_data = request.json
-
+    
     #API function
-    response = predict_bayes()
+    response = predict_bayes(input_data)
 
     return response
 
@@ -28,6 +27,6 @@ def get_html():
     """
     Return the html to submit predictions
     """
-    f=codecs.open("bayesian_submit.html", 'r')
+    f=io.open("bayesian_submit.html", 'r')
     html = f.read()
     return html

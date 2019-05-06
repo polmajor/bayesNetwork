@@ -1,26 +1,28 @@
 openapi: "3.0.0"
 
 info:
-  title: "Bayesian network of B.pertussis isolated strains"
-  description: "API that accepts a list [Clade, ptxP, prn, fim3, Period] and the conditional probabilites of the missing values."
+  title: "Bayesian network of B.pertussis isolated strains."
+  description: "API that accepts a list [Period, Clade, ptxP, prn, fim3] and calculated the conditional probabilites of the missing values."
   version: "1.0"
 
 paths:
-  /bayesPertussis:
+  /bayesian:
     post:
-      description: "Conditional probabilites for B.pertussis isolated strain variables."
+      description: "Known B.pertussis isolated strain variables."
 
       requestBody:
-        description: "list [Clade, ptxP, prn, fim3, Period]"
+        description: "list [Period, Clade, ptxP, prn, fim3]"
         required: true
         content:
           application/json: {}
 
       responses:
         '200':
-          description: "Returns conditional probabilities of missing values."
+          description: "Returns conditional probabilities of the missing values in html table format."
           content: 
-           application/json: {}
+           text/html:
+              schema:
+                type: string
            
     get:
       responses:
