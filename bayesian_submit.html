@@ -38,7 +38,7 @@
                   type: "POST",
                   url: "https://pmajortfm.herokuapp.com/bayesian",
                   data : JSON.stringify({"info":info}),
-                  dataType: 'json',
+                  dataType: 'text',
                   contentType: 'application/json',
                   error: function(error) {
                       document.getElementById("results").innerHTML = "error :(";
