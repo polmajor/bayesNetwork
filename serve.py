@@ -56,11 +56,14 @@ def predict_bayes(idata):
 
     best = []
     b = ""
-
+    
+    corder = []
+    
     for drop in dropped:
         total=0
         higher = -1
         for d in drop:
+            corder.append(d)
             total += p[d+"_1"].values
             if higher < p[d+"_1"].values:
                 higher = p[d+"_1"].values
@@ -74,7 +77,7 @@ def predict_bayes(idata):
                 if higher < p[d+"_1"].values:
                     higher = p[d+"_1"].values
                     b=d
-
+        
         best.append(b)
           
     pcols = p.columns
@@ -86,7 +89,7 @@ def predict_bayes(idata):
         prob = np.round(p[(dcols[x]+"_1")].values[0]*100,3)
         final_df[dcols[x]] = [str(prob)+"%"]
             
-    ht = final_df.to_html(na_rep = "", index = False).replace('\n','')
+    ht = final_df[corder].to_html(na_rep = "", index = False).replace('\n','')
     ht = ht.replace('<table border="1" class="dataframe">', '<table class="table table-bordered" id="myTable2">')
     for b in best:
         ht = ht.replace(("<th>"+b),('<th style = "background-color: #DFDEEE">'+b))
