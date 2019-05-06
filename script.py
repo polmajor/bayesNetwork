@@ -14,11 +14,10 @@ def bPredict():
     """
     # Data the user input
     input_data = request.json
-    print(input_data)
     
     
     #API function
-    response = predict_bayes(input_data)
+    response = predict_bayes(input_data["info"])
 
     return response
 
