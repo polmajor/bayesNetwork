@@ -14,12 +14,12 @@ def bPredict():
     """
     # Data the user input
     input_data = request.json
-    
+    l = list(map(int, input_data["info"]))
     
     #API function
-    #response = predict_bayes(input_data["info"])
+    response = predict_bayes(l)
 
-    return input_data
+    return response
 
 
 #Define the get method.
