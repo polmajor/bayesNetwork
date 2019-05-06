@@ -22,7 +22,7 @@ def bPredict():
     return response
 
 #Define the get method.
-@app.route('/bayesPertussis', methods=['GET'])
+@app.route('/htmlPertussis', methods=['GET'])
 def get_html():
     """
     Return the html to submit predictions
