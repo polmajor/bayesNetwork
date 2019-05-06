@@ -7,7 +7,7 @@ from serve import predict_bayes
 app = Flask(__name__)
 
 #Define the post method.
-@app.route('/bayesPertussis', methods=['POST'])
+@app.route('/bayesian', methods=['POST'])
 def bPredict():
     """ 
     Takes in a json file, then returns the conditional probabilites
@@ -23,7 +23,7 @@ def bPredict():
 
 
 #Define the get method.
-@app.route('/htmlPertussis', methods=['GET'])
+@app.route('/bayesian', methods=['GET'])
 def get_html():
     """
     Return the html to submit predictions
