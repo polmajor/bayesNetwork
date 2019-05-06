@@ -21,13 +21,3 @@ paths:
           description: "Returns conditional probabilities of missing values."
           content: 
            application/json: {}
-           
-  /htmlPertussis:
-    get:
-      responses:
-        '200':
-          description: "Returns an html page to submit predictions."
-          content:
-            text/html: 
-              schema:
-               type: string
