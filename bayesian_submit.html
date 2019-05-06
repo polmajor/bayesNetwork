@@ -37,7 +37,7 @@
                $.ajax({
                   type: "POST",
                   url: "https://pmajortfm.herokuapp.com/bayesian",
-                  data : info,
+                  data : {info:info},
                   dataType: 'json',
                    error: function(error) {
                       document.getElementById("results").innerHTML = "error :(";

@@ -13,7 +13,9 @@ def bPredict():
     of missing values as a json file.
     """
     # Data the user input
-    input_data = request.json
+    input_data = request["info"]
+    print(input_data)
+    
     
     #API function
     response = predict_bayes(input_data)
