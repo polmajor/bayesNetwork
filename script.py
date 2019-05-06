@@ -28,6 +28,6 @@ def get_html():
     """
     Return the html to submit predictions
     """
-    f=codecs.open("test.html", 'r')
+    f=codecs.open("bayesian_submit.html", 'r')
     html = f.read()
     return html

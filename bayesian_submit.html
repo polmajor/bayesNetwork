@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html>
+
+<title>pmajor TFM</title>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+       function calculate(){
+           
+          var info = []
+          var forms = document.forms; 
+          var correct1 = "no";
+          var correct2 = "no";
+          for (var j = 0, l = forms.length; j < l; j++){
+              var radios = document.getElementsByName(forms[j].id);
+                    for (var i = 0, length = radios.length; i < length; i++) {
+                         if (radios[i].checked){
+                             info[j] = (radios[i].value);
+                             if (info[j]==0){
+                              correct1="yes";   
+                             }
+                             if (info[j]!=0){
+                              correct2="yes";   
+                             }
+                             break;
+                         }    
+                    }
+          }
+           if (correct1 == "yes" && correct2 =="yes"){
+               document.getElementById("results").style.color = "black";
+               document.getElementById("results").innerHTML = "Calculating... it may take a few seconds.";
+               $.ajax({
+                  type: "POST",
+                  url: "https://pmajortfm.herokuapp.com/bayesian",
+                  data : info,
+                  dataType: 'json',
+                   error: function(error) {
+                      document.getElementById("results").innerHTML = "error :(";
+                    },
+                   complete: function(response) {
+                   document.getElementById("results").innerHTML = response.status;
+                   }
+                });
+               
+           }else{  
+                document.getElementById("results").style.color = "#ff0000";
+                document.getElementById("results").innerHTML = "Remember to leave at least one 'unknown', but not all!"; 
+           }
+       }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+            <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+            </div>
+           
+            <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="">Bayesian network</a></li>
+                        <li><a href="#">Other1</a></li>
+                        <li><a href="#">Other2</a></li>
+                    </ul>
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="">TFM - Pol Major Munich</a></li>
+                </ul>
+                </div>
+            </div>
+          </nav>
+    
+<div class="collapse navbar-collapse" id="myNavbar2">   
+    <h5>Select the desired combination. Leave at least one 'unknown', but not all!</h5>
+<table class="table table-bordered" id="myTable">
+				   						<thead>
+				     						 <tr>
+				        						<th>Period</th>
+				       							<th>Clade</th>
+				        						<th>ptxP allele</th>
+				       							<th>prn allele</th> 
+				       							<th>fim3 allele</th>       
+				      						 </tr>
+				    					</thead>
+				    					<tbody>
+				     					 	 <tr>
+                                                  <td>
+                                                 <form id="period">
+                                                  <input type="radio" name="period" value="0"> Unknown<br>
+                                                  <input type="radio" name="period" value="1" checked="checked"> &#60;1998, WCV<br>
+                                                  <input type="radio" name="period" value="2"> 1998-2010, ACV-P1<br>
+                                                  <input type="radio" name="period" value="3"> &#62;2010, ACV-P2
+                                                </form>
+                                                 </td>
+                                                 
+                                                 <td>
+                                                 <form id="clade">
+                                                  <input type="radio" name="clade" value="0" checked="checked"> Unknown<br>
+                                                  <input type="radio" name="clade" value="1"> (1,2)<br>
+                                                  <input type="radio" name="clade" value="2"> 3<br>
+                                                  <input type="radio" name="clade" value="3"> 4
+                                                </form>
+                                                 </td>
+                                                 
+                                                 <td>
+                                                 <form id="ptxP">
+                                                  <input type="radio" name="ptxP" value="0" checked="checked"> Unknown<br>
+                                                  <input type="radio" name="ptxP" value="1"> 1<br>
+                                                  <input type="radio" name="ptxP" value="2"> 3<br>
+                                                </form>
+                                                 </td>
+                                                 
+                                                  <td>
+                                                 <form id="prn">
+                                                  <input type="radio" name="prn" value="0" checked="checked"> Unknown<br>
+                                                  <input type="radio" name="prn" value="1"> 1<br>
+                                                  <input type="radio" name="prn" value="2"> 2<br>
+                                                  <input type="radio" name="prn" value="3"> 3
+                                                </form>
+                                                 </td>
+                                                 
+                                                  <td>
+                                                 <form id="fim3">
+                                                  <input type="radio" name="fim3" value="0" checked="checked"> Unknown<br>
+                                                  <input type="radio" name="fim3" value="1"> 1<br>
+                                                  <input type="radio" name="fim3" value="2"> 2<br>
+                                                </form>
+                                                 </td>                                                
+                                            </tr>
+				   					</tbody>
+</table>   
+    <button onclick="calculate()">Calculate</button>
+    <div>
+        <p id="results">sdf</p>
+    </div>
+</div>
+   
