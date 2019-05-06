@@ -28,4 +28,6 @@ paths:
         '200':
           description: "Returns an html page to submit predictions."
           content:
-            text/html: {}
+            text/html: 
+              schema:
+               type: string
