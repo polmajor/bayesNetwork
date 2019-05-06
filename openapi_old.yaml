@@ -1,0 +1,23 @@
+openapi: "3.0.0"
+
+info:
+  title: "B.pertussis strain probability"
+  description: "API that accepts a list [date, born, ptxP, prn, fim3] and returns their clade."
+  version: "1.0"
+
+paths:
+  /modelPertussis:
+    post:
+      description: "Predict clade"
+
+      requestBody:
+        description: "list [date, ptxP, prn, fim3]"
+        required: true
+        content:
+          application/json: {}
+
+      responses:
+        '200':
+          description: "Returns clade probabilities"
+          content: 
+           application/json: {}

@@ -1,0 +1,31 @@
+openapi: "3.0.0"
+
+info:
+  title: "Bayesian network of B.pertussis isolated strains"
+  description: "API that accepts a list [Clade, ptxP, prn, fim3, Period] and the conditional probabilites of the missing values."
+  version: "1.0"
+
+paths:
+  /bayesPertussis:
+    post:
+      description: "Conditional probabilites for B.pertussis isolated strain variables."
+
+      requestBody:
+        description: "list [Clade, ptxP, prn, fim3, Period]"
+        required: true
+        content:
+          application/json: {}
+
+      responses:
+        '200':
+          description: "Returns conditional probabilities of missing values."
+          content: 
+           application/json: {}
+           
+  /htmlPertussis:
+    get:
+      responses:
+        '200':
+          description: "Returns an html page to submit predictions."
+          content:
+            text/html: {}
