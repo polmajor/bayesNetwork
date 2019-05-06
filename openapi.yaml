@@ -21,3 +21,12 @@ paths:
           description: "Returns conditional probabilities of missing values."
           content: 
            application/json: {}
+           
+    get:
+      responses:
+        '200':
+          description: "Returns the html page to make submits."
+          content:
+            text/html:
+              schema:
+                type: string

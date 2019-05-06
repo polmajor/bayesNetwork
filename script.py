@@ -1,5 +1,5 @@
 import json
-#import codecs
+import codecs
 from flask import Flask, request
 from serve import predict_bayes
 
@@ -21,7 +21,7 @@ def bPredict():
 
     return response
 
-'''
+
 #Define the get method.
 @app.route('/htmlPertussis', methods=['GET'])
 def get_html():
@@ -31,4 +31,3 @@ def get_html():
     f=codecs.open("test.html", 'r')
     html = f.read()
     return html
-'''
