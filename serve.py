@@ -78,12 +78,13 @@ def predict_bayes(idata):
         best.append(b)
           
     pcols = p.columns
-    final_df = pd.DataFrame()
-    for x in range(len(pcols)):
-        if x%2==1:
-            name = pcols[x][:-2]
-            prob = np.round(p[pcols[x]].values[0]*100,2)
-            final_df[name] = [str(prob)+"%"]
+    dcols = [pcols.values[u][:-2] for u in range(len(pcols)) if u%2==1]
+    final_df = pd.DataFrame(columns=dcols)
+    
+    for x in range(len(dcols)):
+        name = pcols[x][:-2]
+        prob = np.round(p[(dcols[x]+"_1")].values[0]*100,3)
+        final_df[dcols[x]] = [str(prob)+"%"]
             
     ht = final_df.to_html(na_rep = "", index = False).replace('\n','')
     ht = ht.replace('<table border="1" class="dataframe">', '<table class="table table-bordered" id="myTable2">')
