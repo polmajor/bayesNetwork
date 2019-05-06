@@ -37,14 +37,18 @@
                $.ajax({
                   type: "POST",
                   url: "https://pmajortfm.herokuapp.com/bayesian",
-                  data : {info:info},
+                  data : JSON.stringify({"info":info}),
                   dataType: 'json',
-                   error: function(error) {
+                  contentType: 'application/json',
+                  error: function(error) {
                       document.getElementById("results").innerHTML = "error :(";
                     },
-                   complete: function(text) {
-                   document.getElementById("results").innerHTML = text;
-                   }
+                  success: function(data, textStatus, xhr) {
+                    document.getElementById("results").innerHTML = "success!!";
+                    },
+                  complete: function(xhr, textStatus) {
+                    document.getElementById("results").innerHTML = xhr.status;
+                } 
                 });
                
            }else{  

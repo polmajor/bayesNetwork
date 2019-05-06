@@ -13,7 +13,7 @@ def bPredict():
     of missing values as a json file.
     """
     # Data the user input
-    input_data = request.form['info']
+    input_data = request.json
     print(input_data)
     
     
