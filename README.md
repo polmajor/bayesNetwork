@@ -1,6 +1,6 @@
 # Master's final project - Data Science
 
-## Bayesian network of B.pertussis isolated strains
+## 4.2 Bayesian network of B.pertussis isolated strains
 ![alt text](https://github.com/polmajor/bayesian_api_tfm/blob/master/pertussis.jpg)
 
 # Description
