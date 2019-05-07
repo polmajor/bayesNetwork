@@ -1,6 +1,6 @@
 import json
 import io
-from flask import Flask, request
+from flask import Flask, request, redirect
 from flask_cors import CORS, cross_origin
 from flask_login import LoginManager, current_user, login_user, logout_user, login_required, UserMixin
 from serve import predict_bayes
@@ -21,7 +21,23 @@ class User(UserMixin):
     def __init__(self,id):
         self.id = id
     
+@app.route('/login', methods=['GET'])
+def login():
+    f=io.open("login.html", 'r')
+    html = f.read()
+    return html
+
+@app.route('/success', methods=['POST'])
+def login():
     
+    ida = request.text
+    if (ida=="pertussis"):
+        login_user(User(1))
+        return redirect("https://pmajortfm.herokuapp.com/bayesian", code=200)
+    else:
+        return redirect("https://pmajortfm.herokuapp.com/login", code=302)
+
+
 #Define the post method.
 @app.route('/bayesian', methods=['POST'])
 @login_required
