@@ -1,7 +1,6 @@
 gunicorn
 flask
 flask-cors
-flask-login
 numpy
 pandas
 pgmpy
