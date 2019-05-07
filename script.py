@@ -21,15 +21,14 @@ class User(UserMixin):
     def __init__(self,id):
         self.id = id
     
-@app.route('/login', methods=['GET'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     f=io.open("login.html", 'r')
     html = f.read()
     return html
 
 @app.route('/success', methods=['POST'])
-def login():
-    
+def success():    
     ida = request.text
     if (ida=="pertussis"):
         login_user(User(1))
