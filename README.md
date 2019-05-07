@@ -22,6 +22,8 @@ Written in Python 3.7.3 and html5.
 
 > flask-cors
 
+> flask-login
+
 > numpy
 
 > pandas
