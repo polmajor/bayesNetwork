@@ -1,9 +1,11 @@
 import json
 import io
 from flask import Flask, request
+from flask_cors import CORS, cross_origin
 from serve import predict_bayes
 
 app = Flask(__name__)
+cors = CORS(app)
 
 #Define the post method.
 @app.route('/bayesian', methods=['POST'])
