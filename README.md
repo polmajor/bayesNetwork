@@ -32,6 +32,6 @@ Written in Python 3.7.3 and html5.
 
 ### Resources
 
-? CareerCon: Intro to APIs (2019). Rachael Tatman. https://www.kaggle.com/rtatman/careercon-intro-to-apis
+● CareerCon: Intro to APIs (2019). Rachael Tatman. https://www.kaggle.com/rtatman/careercon-intro-to-apis
 
-? https://www.heroku.com/
+● https://www.heroku.com/
