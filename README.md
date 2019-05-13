@@ -9,7 +9,7 @@ This repository contains a flask app that present the Master's final project res
 URL:
 > https://pmajortfm.herokuapp.com/bayesian
 
-Written in Python 3.7.3 and html5.
+Written in Python 3.7.3 and html.
 
 ### Author:
 *Pol Major Munich*
