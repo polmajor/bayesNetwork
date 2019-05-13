@@ -25,12 +25,48 @@ def bPredict():
     return response
 
 
-#Define the get method.
+#Define get methods
 @app.route('/bayesian', methods=['GET'])
-def get_html():
+def bayesian():
     """
-    Return the html to submit predictions
+    Returns the html to submit predictions
     """
     f=io.open("bayesian_submit.html", 'r')
+    html = f.read()
+    return html
+
+@app.route('/alleles', methods=['GET'])
+def alleles():
+    """
+    Returns the html with allele tendencies
+    """
+    f=io.open("allele_evolution.html", 'r')
+    html = f.read()
+    return html
+
+@app.route('/forecast', methods=['GET'])
+def forecast():
+    """
+    Returns the html for the Catalonia forecast interface
+    """
+    f=io.open("forecast.html", 'r')
+    html = f.read()
+    return html
+
+@app.route('/week', methods=['GET'])
+def week():
+    """
+    Returns the html with the weekly Catalonia forecast until 2024
+    """
+    f=io.open("Weekly_Forecast.html", 'r')
+    html = f.read()
+    return html
+
+@app.route('/annual', methods=['GET'])
+def annual():
+    """
+    Returns the html with the annual Catalonia forecast until 2024
+    """
+    f=io.open("Annual_Forecast.html", 'r')
     html = f.read()
     return html

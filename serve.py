@@ -92,6 +92,15 @@ def predict_bayes(idata):
     ht = final_df[corder].to_html(na_rep = "", index = False).replace('\n','')
     ht = ht.replace('<table border="1" class="dataframe">', '<table class="table table-bordered" id="myTable2">')
     for b in best:
-        ht = ht.replace(("<th>"+b),('<th style = "background-color: #DFDEEE">'+b))
+        c=b
+        if b == "Period_<1998, WCV":
+            b = "Period_&#60;1998, WCV"
+            c = "Period_&lt;1998, WCV"
+           
+        if b == "Period_>2010, ACV-P2":
+            b = "Period_&#62;2010, ACV-P2"
+            c = "Period_&gt;2010, ACV-P2"
+            
+        ht = ht.replace(("<th>"+c),('<th style = "background-color: #DFDEEE">'+b))
     
     return ht

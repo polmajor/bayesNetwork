@@ -1,8 +1,8 @@
 openapi: "3.0.0"
 
 info:
-  title: "Bayesian network of B.pertussis isolated strains."
-  description: "API that accepts a list [Period, Clade, ptxP, prn, fim3] and calculated the conditional probabilites of the missing values."
+  title: "Master's final project result presentation."
+  description: "API to present the results of the analyses of B.pertussis strains in Catalonia."
   version: "1.0"
 
 paths:
@@ -32,3 +32,43 @@ paths:
             text/html:
               schema:
                 type: string
+                
+  /alleles:
+    get:
+      responses:
+          '200':
+            description: "Returns the html page of the allele evolution."
+            content:
+              text/html:
+                schema:
+                  type: string
+  
+  /forecast:
+    get:
+      responses:
+          '200':
+            description: "Returns the html page of the Pertussis incidence forecast for Catalonia."
+            content:
+              text/html:
+                schema:
+                  type: string
+                  
+  /week:
+    get:
+      responses:
+          '200':
+            description: "Returns the html page of the weekly forecast."
+            content:
+              text/html:
+                schema:
+                  type: string
+                  
+  /annual:
+    get:
+      responses:
+          '200':
+            description: "Returns the html page of the annual forecast."
+            content:
+              text/html:
+                schema:
+                  type: string
