@@ -18,6 +18,7 @@
                     } else{
                       document.getElementById("glo").className = "hidden";
                       document.getElementById("net").className = "container-fluid";
+                      document.getElementById("net").style.visibility = "visible";
                }
        }
            
@@ -57,7 +58,7 @@
     </div>
 </div>   
     
-<div class="container-fluid", id="glo">
+<div class="container-fluid" id="glo">
     <h5>Evolution of the alleles of the B.pertussis antigens <b>over the world</b>.</h5>
     <h5><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3994516/" target="_blank"> Data source</a></h5>
 
@@ -65,7 +66,7 @@
     <script type='text/javascript'>                    var divElement = document.getElementById('viz1557347604710');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='85%';vizElement.style.height=(divElement.offsetWidth*0.6)+'px';                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 </div>
     
-<div class="hidden", id="net">
+<div class="container-fluid" id="net" style="visibility:hidden">
     <h5>Evolution of the alleles of the B.pertussis antigens in <b>the Netherlands</b>.</h5>
     <h5><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0046407" target="_blank"> Data source</a></h5>
 
