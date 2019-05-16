@@ -12,11 +12,16 @@
     <script>
        function display(d) {
                 if (d=="global"){
-                      document.getElementById("net").style.display ='none';
-                      document.getElementById("glo").style.display ='block';
-                    } else{
-                       document.getElementById("glo").style.display='none';
-                       document.getElementById("net").style.display='block';
+                    if  (document.getElementById("glo").style.display='none'){
+                      $("#net").toggle();
+                      $("#glo").toggle();
+                    }
+               }
+               if (d=="nether"){
+                    if  (document.getElementById("net").style.display='none'){
+                      $("#net").toggle();
+                      $("#glo").toggle();
+                    }
                }
        }
            
@@ -61,14 +66,14 @@
     <h5><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3994516/" target="_blank"> Data source</a></h5>
 
         <div class='tableauPlaceholder' id='viz1557347604710' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Gl&#47;GlobalevolutionofB_pertussisalleles&#47;Bart_2014_allele_evolution&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='GlobalevolutionofB_pertussisalleles&#47;Bart_2014_allele_evolution' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='tooltip' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Gl&#47;GlobalevolutionofB_pertussisalleles&#47;Bart_2014_allele_evolution&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='no' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div> 
-    <script type='text/javascript'>                    var divElement = document.getElementById('viz1557347604710');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='85%';vizElement.style.height=(divElement.offsetWidth*0.4)+'px';                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    <script type='text/javascript'>                    var divElement = document.getElementById('viz1557347604710');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.4)+'px';                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 </div>
     
 <div class="container-fluid", id="net", style="display: none;">
     <h5>Evolution of the alleles of the B.pertussis antigens in <b>the Netherlands</b>.</h5>
     <h5><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0046407" target="_blank"> Data source</a></h5>
 
-<div class='tableauPlaceholder' id='viz1557345332857' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ev&#47;EvolutionofB_pertussisallelesinNetherlands&#47;Netherlands_allele_evolution&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='EvolutionofB_pertussisallelesinNetherlands&#47;Netherlands_allele_evolution' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='tooltip' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ev&#47;EvolutionofB_pertussisallelesinNetherlands&#47;Netherlands_allele_evolution&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='no' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement2 = document.getElementById('viz1557345332857');                    var vizElement2 = divElement2.getElementsByTagName('object')[0];                   vizElement2.style.width='85%';vizElement2.style.height=(divElement.offsetWidth*0.4)+'px';                      var scriptElement2 = document.createElement('script');                    scriptElement2.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement2.parentNode.insertBefore(scriptElement2, vizElement2);                </script>    
+<div class='tableauPlaceholder' id='viz1557345332857' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ev&#47;EvolutionofB_pertussisallelesinNetherlands&#47;Netherlands_allele_evolution&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='EvolutionofB_pertussisallelesinNetherlands&#47;Netherlands_allele_evolution' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='tooltip' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ev&#47;EvolutionofB_pertussisallelesinNetherlands&#47;Netherlands_allele_evolution&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='no' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement2 = document.getElementById('viz1557345332857');                    var vizElement2 = divElement2.getElementsByTagName('object')[0];                   vizElement2.style.width='100%';vizElement2.style.height=(divElement.offsetWidth*0.4)+'px';                      var scriptElement2 = document.createElement('script');                    scriptElement2.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement2.parentNode.insertBefore(scriptElement2, vizElement2);                </script>    
     
     </div>
     </body> 
