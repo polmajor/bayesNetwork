@@ -20,6 +20,8 @@ Written in Python 3.7.3 and html.
 
 > flask
 
+> flask-cors
+
 > numpy
 
 > pandas
