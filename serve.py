@@ -21,41 +21,47 @@ def predict_bayes(idata):
 
     dropped = []
     to_predict = []
+    corder = df.copy()
 
     if (idata[1] != 0):
         df[clade[idata[1]-1]] = 1
+        corder.drop(clade, axis=1, inplace=True)
     else:
         df.drop(clade, axis=1, inplace=True)
         dropped.append(clade)
         to_predict.append("Clade")
 
-    if (idata[2] != 0):
-        df[ptxP[idata[2]-1]] = 1
+    if (idata[0] != 0):
+        df[period[idata[0]-1]] = 1
+        corder.drop(period, axis=1, inplace=True)
     else:
-        df.drop(ptxP, axis=1, inplace=True)
-        dropped.append(ptxP)
-        to_predict.append("ptxP allele")
-
-    if (idata[3] != 0):
-        df[prn[idata[3]-1]] = 1
-    else:
-        df.drop(prn, axis=1, inplace=True)
-        dropped.append(prn)
-        to_predict.append("prn allele")
+        df.drop(period, axis=1, inplace=True)
+        dropped.append(period)
+        to_predict.append("DATE")   
 
     if (idata[4] != 0):
         df[fim3[idata[4]-1]] = 1
+        corder.drop(fim3, axis=1, inplace=True)
     else:
         df.drop(fim3, axis=1, inplace=True)
         dropped.append(fim3)
         to_predict.append("fim3 allele")
 
-    if (idata[0] != 0):
-        df[period[idata[0]-1]] = 1
+    if (idata[3] != 0):
+        df[prn[idata[3]-1]] = 1
+        corder.drop(prn, axis=1, inplace=True)
     else:
-        df.drop(period, axis=1, inplace=True)
-        dropped.append(period)
-        to_predict.append("DATE")
+        df.drop(prn, axis=1, inplace=True)
+        dropped.append(prn)
+        to_predict.append("prn allele")    
+
+    if (idata[2] != 0):
+        df[ptxP[idata[2]-1]] = 1
+        corder.drop(ptxP, axis=1, inplace=True)
+    else:
+        df.drop(ptxP, axis=1, inplace=True)
+        dropped.append(ptxP)
+        to_predict.append("ptxP allele")
 
     idf = pd.DataFrame([idata], columns=["DATE","Clade","ptxP allele","prn allele","fim3 allele"])
     for c in to_predict:
@@ -79,7 +85,7 @@ def predict_bayes(idata):
         b = np.argmax(final_df[dr].values[0])
         best.append(dr[b])
 
-    ht = final_df.to_html(na_rep = "", index = False).replace('\n','')
+    ht = final_df[corder.columns].to_html(na_rep = "", index = False).replace('\n','')
     ht = ht.replace('<table border="1" class="dataframe">', '<table class="table table-bordered" id="myTable2">')
     for b in best:
         c=b
