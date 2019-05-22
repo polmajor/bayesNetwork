@@ -85,7 +85,7 @@ def predict_bayes(idata):
         b = np.argmax(final_df[dr].values[0])
         best.append(dr[b])
 
-    ht = final_df[corder].to_html(na_rep = "", index = False).replace('\n','')
+    ht = final_df[corder.columns].to_html(na_rep = "", index = False).replace('\n','')
     ht = ht.replace('<table border="1" class="dataframe">', '<table class="table table-bordered" id="myTable2">')
     for b in best:
         c=b
