@@ -51,45 +51,29 @@ def predict_bayes(idata):
         df.drop(period, axis=1, inplace=True)
         dropped.append(period)
 
+    idf = pd.DataFrame([idata], columns=["DATE","Clade","ptxP allele","prn allele","fim3 allele"])
+    for c in to_predict:
+        idf.drop(c, axis=1, inplace=True)
+
+    idf = idf-1
     model = pickle.load(open("bayesian_net.pickle.dat", "rb"))
-    p = model.predict_probability(df)
+    p = model.predict_probability(idf)
+    
+    columns = []
+    for dr in dropped:
+        for d in dr:
+            columns.append(d)
 
+    vals = [str(np.round(v*100,2))+"%" for v in p.values[0]]
+    final_df = pd.DataFrame([vals], columns=columns)
+    
     best = []
-    b = ""
-    
-    corder = []
-    
-    for drop in dropped:
-        total=0
-        higher = -1
-        for d in drop:
-            corder.append(d)
-            total += p[d+"_1"].values
-            if higher < p[d+"_1"].values:
-                higher = p[d+"_1"].values
-                b=d
 
+    for dr in dropped:
+        b = np.argmax(final_df[dr].values[0])
+        best.append(dr[b])
 
-        if total > 1:
-            higher = -1
-            for d in drop:
-                p[d+"_1"]=p[d+"_1"]/total
-                if higher < p[d+"_1"].values:
-                    higher = p[d+"_1"].values
-                    b=d
-        
-        best.append(b)
-          
-    pcols = p.columns
-    dcols = [pcols.values[u][:-2] for u in range(len(pcols)) if u%2==1]
-    final_df = pd.DataFrame(columns=dcols)
-    
-    for x in range(len(dcols)):
-        name = pcols[x][:-2]
-        prob = np.round(p[(dcols[x]+"_1")].values[0]*100,3)
-        final_df[dcols[x]] = [str(prob)+"%"]
-            
-    ht = final_df[corder].to_html(na_rep = "", index = False).replace('\n','')
+    ht = final_df.to_html(na_rep = "", index = False).replace('\n','')
     ht = ht.replace('<table border="1" class="dataframe">', '<table class="table table-bordered" id="myTable2">')
     for b in best:
         c=b
