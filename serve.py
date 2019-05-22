@@ -20,36 +20,42 @@ def predict_bayes(idata):
     period = df.columns[10:13]
 
     dropped = []
+    to_predict = []
 
     if (idata[1] != 0):
         df[clade[idata[1]-1]] = 1
     else:
         df.drop(clade, axis=1, inplace=True)
         dropped.append(clade)
+        to_predict.append("Clade")
 
     if (idata[2] != 0):
         df[ptxP[idata[2]-1]] = 1
     else:
         df.drop(ptxP, axis=1, inplace=True)
         dropped.append(ptxP)
+        to_predict.append("ptxP allele")
 
     if (idata[3] != 0):
         df[prn[idata[3]-1]] = 1
     else:
         df.drop(prn, axis=1, inplace=True)
         dropped.append(prn)
+        to_predict.append("prn allele")
 
     if (idata[4] != 0):
         df[fim3[idata[4]-1]] = 1
     else:
         df.drop(fim3, axis=1, inplace=True)
         dropped.append(fim3)
+        to_predict.append("fim3 allele")
 
     if (idata[0] != 0):
         df[period[idata[0]-1]] = 1
     else:
         df.drop(period, axis=1, inplace=True)
         dropped.append(period)
+        to_predict.append("DATE")
 
     idf = pd.DataFrame([idata], columns=["DATE","Clade","ptxP allele","prn allele","fim3 allele"])
     for c in to_predict:
