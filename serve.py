@@ -3,8 +3,21 @@ import numpy as np
 import json
 import pandas as pd
 from pgmpy.models import BayesianModel
+import smtplib
 
 
+def initialize(login, pss):
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    conn.login(login,pss)
+    
+def send_email(conn, f, t, m):
+    date = str(datetime.datetime.today())
+    conn.sendmail(f,t,m)
+    conn.quit()
+    
+    
 def predict_bayes(idata):
     """ Returns missing values conditional probabilities.
     Input: list[Clade, ptxP, prn, fim3, Period]
